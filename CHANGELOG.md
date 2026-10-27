@@ -6,6 +6,8 @@ and on the second line of the XT's display as it starts up.
 
 ## Unreleased
 
+## 1.0.0 — 2026-10-26
+
 ### New
 
 - Oscillator 2's wavetable: Osc2 can play a wavetable of its own.
