@@ -1,0 +1,541 @@
+{
+ "firmware": {
+  "version": "2.33",
+  "update_name": "mw2_xt_xtk_sys_v233.mid",
+  "update_sha256": "4960b839027ba96024ca3cd75fe7cddd066b16f277b5a4c72d9716c84a7cc882",
+  "overlay_sha256": "e0b6dfe976252d0cf34c002f99733c414aa5ccf41975b551279fb1fb29703ccc",
+  "overlay_bytes": 128600,
+  "base_address": "0x100000"
+ },
+ "hunks": [
+  {
+   "address": "0x102bf0",
+   "bytes": 10,
+   "site": "ui_global_parameter_record_control_y"
+  },
+  {
+   "address": "0x102cb8",
+   "bytes": 10,
+   "site": "ui_global_parameter_record_30"
+  },
+  {
+   "address": "0x10406e",
+   "bytes": 18,
+   "site": "mpe_global_page_descriptor"
+  },
+  {
+   "address": "0x104080",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_04_controls"
+  },
+  {
+   "address": "0x104092",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_05_volume"
+  },
+  {
+   "address": "0x1040a4",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_06_tune"
+  },
+  {
+   "address": "0x1040b6",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_07_keyboard"
+  },
+  {
+   "address": "0x1040c8",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_08_local_control"
+  },
+  {
+   "address": "0x1040da",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_09_sustain_pedal"
+  },
+  {
+   "address": "0x1040ec",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_10_system"
+  },
+  {
+   "address": "0x1040fe",
+   "bytes": 18,
+   "site": "ui_global_page_descriptor_11_version"
+  },
+  {
+   "address": "0x104184",
+   "bytes": 10,
+   "site": "ui_menu_page_counts"
+  },
+  {
+   "address": "0x1049e8",
+   "bytes": 6,
+   "site": "ui_edit_parameter_read_selector"
+  },
+  {
+   "address": "0x104a0c",
+   "bytes": 6,
+   "site": "ui_edit_parameter_read_selector"
+  },
+  {
+   "address": "0x104c4e",
+   "bytes": 3582,
+   "site": "diag_led_cursor_scan_codes"
+  },
+  {
+   "address": "0x105af6",
+   "bytes": 8,
+   "site": "ui_install_expanded_voice_map"
+  },
+  {
+   "address": "0x105b8a",
+   "bytes": 10,
+   "site": "ui_init_active_page_descriptor"
+  },
+  {
+   "address": "0x105bb4",
+   "bytes": 12,
+   "site": "ui_invalidate_slot_loaded_wavetables"
+  },
+  {
+   "address": "0x105bcc",
+   "bytes": 4,
+   "site": "ui_build_mod_dest_order_inverse_map"
+  },
+  {
+   "address": "0x105dd6",
+   "bytes": 4,
+   "site": "ui_test_startup_front_panel_diagnostics"
+  },
+  {
+   "address": "0x1063ba",
+   "bytes": 6,
+   "site": "ui_arp_clock_service_demo"
+  },
+  {
+   "address": "0x1064f0",
+   "bytes": 8,
+   "site": "ui_service_publish_tick_snapshot"
+  },
+  {
+   "address": "0x106580",
+   "bytes": 8,
+   "site": "ui_service_refresh_voice_groups"
+  },
+  {
+   "address": "0x1066fe",
+   "bytes": 6,
+   "site": "ui_service_demo_check_exit"
+  },
+  {
+   "address": "0x1075b2",
+   "bytes": 6,
+   "site": "ui_update_playback_menu_start_demo"
+  },
+  {
+   "address": "0x107b48",
+   "bytes": 8,
+   "site": "ui_dispatch_display_parameter_select"
+  },
+  {
+   "address": "0x1087aa",
+   "bytes": 6,
+   "site": "ui_mod_dest_add_order_delta"
+  },
+  {
+   "address": "0x1087be",
+   "bytes": 4,
+   "site": "ui_mod_dest_clamp_upper"
+  },
+  {
+   "address": "0x1087c4",
+   "bytes": 2,
+   "site": "ui_mod_dest_clamp_upper"
+  },
+  {
+   "address": "0x1087c8",
+   "bytes": 6,
+   "site": "ui_mod_dest_store_index_render"
+  },
+  {
+   "address": "0x10a118",
+   "bytes": 6,
+   "site": "dispatch_parameter_page"
+  },
+  {
+   "address": "0x10a482",
+   "bytes": 6,
+   "site": "midi_dispatch_status_switch"
+  },
+  {
+   "address": "0x10a80c",
+   "bytes": 12,
+   "site": "midi_pitch_bend_full_scale"
+  },
+  {
+   "address": "0x10a818",
+   "bytes": 8,
+   "site": "midi_pitch_bend_voice_scan_start"
+  },
+  {
+   "address": "0x10ab26",
+   "bytes": 6,
+   "site": "midi_channel_pressure"
+  },
+  {
+   "address": "0x10ab6e",
+   "bytes": 6,
+   "site": "midi_control_change"
+  },
+  {
+   "address": "0x10b814",
+   "bytes": 128,
+   "site": "sound_parameter_page_map"
+  },
+  {
+   "address": "0x10ba64",
+   "bytes": 10,
+   "site": "single_parameter_metadata_xmod_mode"
+  },
+  {
+   "address": "0x10badc",
+   "bytes": 10,
+   "site": "single_parameter_metadata_warp1_amount"
+  },
+  {
+   "address": "0x10bae6",
+   "bytes": 10,
+   "site": "single_parameter_metadata_warp1_mode"
+  },
+  {
+   "address": "0x10bafa",
+   "bytes": 10,
+   "site": "single_parameter_metadata_warp2_amount"
+  },
+  {
+   "address": "0x10bb1c",
+   "bytes": 6,
+   "site": "single_parameter_metadata_warp2_amount"
+  },
+  {
+   "address": "0x10bb54",
+   "bytes": 10,
+   "site": "single_parameter_metadata_warp2_mode"
+  },
+  {
+   "address": "0x10bb72",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10bb80",
+   "bytes": 6,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10bc2a",
+   "bytes": 6,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10bc44",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c1a8",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c1c6",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c1e4",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c202",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c220",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c23e",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c25c",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c27a",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c298",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c2b6",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c2d4",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c2f2",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c310",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c32e",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c34c",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c36a",
+   "bytes": 10,
+   "site": "single_parameter_metadata_wave2_table"
+  },
+  {
+   "address": "0x10c654",
+   "bytes": 4,
+   "site": "ui_page_group_descriptor_tables"
+  },
+  {
+   "address": "0x10d5b6",
+   "bytes": 8,
+   "site": "voice_lifecycle_allocate"
+  },
+  {
+   "address": "0x10d632",
+   "bytes": 10,
+   "site": "voice_lifecycle_release_matching_compare"
+  },
+  {
+   "address": "0x10ddb8",
+   "bytes": 6,
+   "site": "UI_FORMAT_MOD_DESTINATION_NAME"
+  },
+  {
+   "address": "0x10f5f2",
+   "bytes": 180,
+   "site": "SYNTH_UPLOAD_SEEDED_WAVES"
+  },
+  {
+   "address": "0x111288",
+   "bytes": 4,
+   "site": "frame_clear_modulation_sums"
+  },
+  {
+   "address": "0x111296",
+   "bytes": 4,
+   "site": "frame_clear_modulation_sums"
+  },
+  {
+   "address": "0x1112a4",
+   "bytes": 4,
+   "site": "frame_clear_modulation_sums"
+  },
+  {
+   "address": "0x1112b2",
+   "bytes": 4,
+   "site": "frame_clear_modulation_sums"
+  },
+  {
+   "address": "0x1112e2",
+   "bytes": 4,
+   "site": "FRAME_SECONDARY_RECORD_LOOP"
+  },
+  {
+   "address": "0x111b48",
+   "bytes": 6,
+   "site": "frame_wave_bend_range"
+  },
+  {
+   "address": "0x111c06",
+   "bytes": 12,
+   "site": "frame_wave_pitch_interpolate"
+  },
+  {
+   "address": "0x111c38",
+   "bytes": 8,
+   "site": "frame_wave_index_pack"
+  },
+  {
+   "address": "0x111cb8",
+   "bytes": 6,
+   "site": "frame_wave_base_and_coeff_emit"
+  },
+  {
+   "address": "0x111d40",
+   "bytes": 6,
+   "site": "frame_osc2_bend_range_dispatch"
+  },
+  {
+   "address": "0x111de0",
+   "bytes": 6,
+   "site": "frame_osc2_ratio_emit"
+  },
+  {
+   "address": "0x111e54",
+   "bytes": 6,
+   "site": "frame_osc2_wave_index_add"
+  },
+  {
+   "address": "0x111e84",
+   "bytes": 8,
+   "site": "frame_osc2_wave_index_pack"
+  },
+  {
+   "address": "0x111edc",
+   "bytes": 6,
+   "site": "frame_osc2_block_select"
+  },
+  {
+   "address": "0x111efe",
+   "bytes": 6,
+   "site": "frame_osc2_wave_words_emit"
+  },
+  {
+   "address": "0x111f58",
+   "bytes": 6,
+   "site": "frame_output_ringmod_level_emit"
+  },
+  {
+   "address": "0x1124f8",
+   "bytes": 14,
+   "site": "filter1_frame_emit_cubic_control"
+  },
+  {
+   "address": "0x114a2c",
+   "bytes": 144,
+   "site": "platform_render_wave_table_ramp"
+  },
+  {
+   "address": "0x114b68",
+   "bytes": 16,
+   "site": "storage_packed_field_widths_20"
+  },
+  {
+   "address": "0x1156c8",
+   "bytes": 16,
+   "site": "preset_table_parameter_cc_numbers_4"
+  },
+  {
+   "address": "0x1156d8",
+   "bytes": 16,
+   "site": "preset_table_parameter_cc_numbers_20"
+  },
+  {
+   "address": "0x1156e8",
+   "bytes": 16,
+   "site": "preset_table_parameter_cc_numbers_36"
+  },
+  {
+   "address": "0x1170f2",
+   "bytes": 6,
+   "site": "preset_sysex_info_front_panel_test"
+  },
+  {
+   "address": "0x118480",
+   "bytes": 16,
+   "site": "MIDI_CC_SOUND_PARAMETER_MAP"
+  },
+  {
+   "address": "0x1184b0",
+   "bytes": 16,
+   "site": "midi_cc_sound_parameter_map_48"
+  },
+  {
+   "address": "0x1184d0",
+   "bytes": 16,
+   "site": "midi_cc_sound_parameter_map_80"
+  },
+  {
+   "address": "0x1184f0",
+   "bytes": 16,
+   "site": "midi_cc_sound_parameter_map_112"
+  },
+  {
+   "address": "0x118600",
+   "bytes": 3580,
+   "site": "UI_DEMO_INITIAL_EVENTS"
+  },
+  {
+   "address": "0x119424",
+   "bytes": 80,
+   "site": "FIRMWARE_VERSION_STRING"
+  },
+  {
+   "address": "0x11a4de",
+   "bytes": 6,
+   "site": "effect_type_set"
+  },
+  {
+   "address": "0x11a50a",
+   "bytes": 6,
+   "site": "effect_type_set_check_group_1"
+  },
+  {
+   "address": "0x11a538",
+   "bytes": 6,
+   "site": "effect_type_set_check_group_2"
+  },
+  {
+   "address": "0x11a722",
+   "bytes": 20,
+   "site": "effect_parameter_set"
+  },
+  {
+   "address": "0x11a736",
+   "bytes": 24,
+   "site": "effect_group_buffer"
+  },
+  {
+   "address": "0x11a74e",
+   "bytes": 12,
+   "site": "effect_group_buffer_internal"
+  },
+  {
+   "address": "0x11a75a",
+   "bytes": 4,
+   "site": "effect_parameter_ladder_end"
+  },
+  {
+   "address": "0x11eabe",
+   "bytes": 12,
+   "site": "dsp_host_stream_next"
+  }
+ ],
+ "extension": {
+  "start": "0x11f658",
+  "end": "0x11ffb7"
+ }
+}

@@ -1,0 +1,7 @@
+	include	"features/edition_constants.inc"
+	include	"features/mpe/mpe_constants.inc"
+	include	"features/osc2_table/osc2_table_constants.inc"
+	include	"features/xmod/xmod_constants.inc"
+	include	"features/warp/warp_constants.inc"
+	include	"features/honda/honda_constants.inc"
+	include	"features/morph/morph_constants.inc"

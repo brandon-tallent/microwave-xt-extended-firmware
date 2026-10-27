@@ -1,0 +1,7 @@
+	include	"features/demo_gone.asm"
+	include	"features/xmod/xmod.asm"
+	include	"features/osc_bank.asm"
+	include	"features/warp/warp.asm"
+	include	"features/warp/warp_names.asm"
+	include	"features/honda/honda.asm"
+	include	"features/morph/morph.asm"

@@ -1,0 +1,13 @@
+/build/
+/dist/
+/vendor/
+__pycache__/
+*.pyc
+.DS_Store
+# Waldorf's software and anything patched from it never belong in this repo.
+*.mid
+*.bin
+*.p
+*.lst
+*.zip
+*.pdf
