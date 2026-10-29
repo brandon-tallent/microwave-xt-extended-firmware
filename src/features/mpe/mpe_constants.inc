@@ -50,9 +50,3 @@ MPE_HELD_STAGE_MIN         equ  ENV_STAGE_DECAY
 MPE_VALUE_SHIFT            equ  8
 MPE_DIMENSION_MAX          equ  MIDI_7BIT_MAX<<MPE_VALUE_SHIFT
 MPE_BEND_MIN               equ  -$8000
-
-; ---- Display: the named incoming Y-CC formatter ----
-MPE_FORMAT_FIELD_LONGS     equ  5
-MPE_FORMAT_SPACES          equ  '    '
-MPE_Y_CC_NAME_CHARS        equ  9
-MPE_PARAMETER_RECORD_BYTES equ  10

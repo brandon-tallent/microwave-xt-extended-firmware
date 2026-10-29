@@ -25,6 +25,11 @@ xmod_dsp_stream_done:
 	rts
 
 xmod_frame_emit:
+	jsr	board1.l
+	bne.b	xmod_frame_mode
+	move.l	d0,(a6)
+	bra.w	xmod_frame_external
+xmod_frame_mode:
 	moveq	#0,d1
 	move.b	SOUND_XMOD_MODE(a4),d1
 	cmpi.b	#XMOD_MODE_LAST,d1
@@ -73,6 +78,8 @@ xmod_depth_done:
 xmod_ring_emit:
 	cmpi.b	#XMOD_MODE_AM,SOUND_XMOD_MODE(a4)
 	bne.b	xmod_ring_emit_level
+	jsr	board1.l
+	beq.b	xmod_ring_emit_level
 	bsr.b	xmod_depth
 	lsr.l	#8,d0
 	move.l	d0,d2
@@ -101,22 +108,6 @@ xmod_frame_external:
 	swap	d0
 	move.l	d0,(a6)
 	rts
-
-xmod_display:
-	movea.l	d2,a0
-	lea	xmod_mode_names.l,a1
-	move.w	d3,d0
-	cmpi.w	#XMOD_MODE_LAST,d0
-	bls.b	xmod_display_known
-	moveq	#XMOD_MODE_FM,d0
-xmod_display_known:
-	mulu.w	#XMOD_MODE_NAME_CHARS,d0
-	adda.w	d0,a1
-	moveq	#XMOD_MODE_NAME_CHARS-1,d0
-xmod_display_char:
-	move.b	(a1)+,(a0)+
-	dbf	d0,xmod_display_char
-	jmp	ui_dispatch_display_parameter_return.l
 
 xmod_dsp_stream_morph:
 	include	"features/xmod/dsp_stream_morph.inc"

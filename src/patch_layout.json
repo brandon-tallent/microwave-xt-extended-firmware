@@ -9,11 +9,6 @@
  },
  "hunks": [
   {
-   "address": "0x102bf0",
-   "bytes": 10,
-   "site": "ui_global_parameter_record_control_y"
-  },
-  {
    "address": "0x102cb8",
    "bytes": 10,
    "site": "ui_global_parameter_record_30"
@@ -84,9 +79,9 @@
    "site": "diag_led_cursor_scan_codes"
   },
   {
-   "address": "0x105af6",
-   "bytes": 8,
-   "site": "ui_install_expanded_voice_map"
+   "address": "0x105aec",
+   "bytes": 10,
+   "site": "ui_install_single_board_voice_count"
   },
   {
    "address": "0x105b8a",
@@ -349,6 +344,16 @@
    "site": "SYNTH_UPLOAD_SEEDED_WAVES"
   },
   {
+   "address": "0x1111a4",
+   "bytes": 6,
+   "site": "FRAME_VOICE_DSP_STATE_UPDATE"
+  },
+  {
+   "address": "0x1111f2",
+   "bytes": 6,
+   "site": "FRAME_VOICE_DSP_REFRESH_PHYSICAL_VOICE_INDEX"
+  },
+  {
    "address": "0x111288",
    "bytes": 4,
    "site": "frame_clear_modulation_sums"
@@ -492,6 +497,16 @@
    "address": "0x119424",
    "bytes": 80,
    "site": "FIRMWARE_VERSION_STRING"
+  },
+  {
+   "address": "0x119980",
+   "bytes": 92,
+   "site": "MIDI_SET_PANEL_OUTPUT_BIT"
+  },
+  {
+   "address": "0x11a278",
+   "bytes": 172,
+   "site": "midi_wait_input_event"
   },
   {
    "address": "0x11a4de",

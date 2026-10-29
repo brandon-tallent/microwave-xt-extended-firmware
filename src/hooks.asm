@@ -19,11 +19,6 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
         dc.b    byte16,byte17
         endm
 
-; ---- ui_global_parameter_record_control_y ----
-	org	ui_global_parameter_record_control_y
-	; Control Y shows the parameter alias of its CC, the Member Y input.
-	UI_PARAMETER_RECORD	ui_parameter_alias_control_y,ui_metadata_domain_global_parameter,0,120,0,1,MPE_Y_CC_FORMAT
-
 ; ---- ui_global_parameter_record_30 ----
 	org	ui_global_parameter_record_30
 	; Global 30 is MPE Mode: off, on, or on with every Sound at the Global Bend
@@ -32,7 +27,7 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 
 ; ---- mpe_global_page_descriptor ----
 	org	mpe_global_page_descriptor
-	UI_PAGE_DESCRIPTOR	mpe_page_labels,mpe_page_title,30,0,10,0,ui_install_global_parameter_callbacks,0,$00
+	UI_PAGE_DESCRIPTOR	mpe_page_labels,mpe_page_title,30,0,0,0,ui_install_global_parameter_callbacks,0,$00
 
 ; ---- ui_global_page_descriptor_04_controls ----
 	org	ui_global_page_descriptor_04_controls
@@ -89,11 +84,10 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 	dc.b	[EDITION_REGION_PANEL_END-*]$ff
 	endif
 
-; ---- ui_install_expanded_voice_map ----
-	org	ui_install_expanded_voice_map
-	; v2.33: move.w #VOICE_EXPANDED_COUNT,VOICE_COUNT.l (and the 30-entry fill
-	; below)
-	jmp	voices_install_map.l
+; ---- ui_install_single_board_voice_count ----
+	org	ui_install_single_board_voice_count
+	jmp	board1_voice_count.l
+	nop
 	nop
 
 ; ---- ui_init_active_page_descriptor ----
@@ -103,7 +97,7 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 
 ; ---- ui_invalidate_slot_loaded_wavetables ----
 	org	$105bb4
-	jsr	warp_dest_order_a2.l
+	jsr	mod_dest_order_a2.l
 	lea.l	ui_mod_dest_order_inverse_map.l, a1
 
 ; ---- ui_build_mod_dest_order_inverse_map ----
@@ -163,7 +157,7 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 
 ; ---- ui_mod_dest_store_index_render ----
 	org	$1087c8
-	jsr	warp_dest_order_a0.l
+	jsr	mod_dest_order_a0.l
 
 ; ---- dispatch_parameter_page ----
 	org	$10a118
@@ -360,7 +354,7 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 ; ---- UI_FORMAT_MOD_DESTINATION_NAME ----
 	org	UI_FORMAT_MOD_DESTINATION_NAME
 	; v2.33: lea.l UI_MODULATION_DESTINATION_NAMES.l,a1
-	jsr	warp_dest_names.l
+	jsr	mod_dest_names.l
 
 ; ---- SYNTH_UPLOAD_SEEDED_WAVES ----
 	org	SYNTH_UPLOAD_SEEDED_WAVES
@@ -372,25 +366,33 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 	dc.b	[EDITION_REGION_SEEDED_END-*]$ff
 	endif
 
+; ---- FRAME_VOICE_DSP_STATE_UPDATE ----
+	org	$1111a4
+	jsr	fxpara_note_done.l
+
+; ---- FRAME_VOICE_DSP_REFRESH_PHYSICAL_VOICE_INDEX ----
+	org	$1111f2
+	jsr	fxpara_frame_done.l
+
 ; ---- frame_clear_modulation_sums ----
 	org	$111288
-	bsr.w	warp_mod_set
+	bsr.w	mod_dest_set
 
 ; ---- frame_clear_modulation_sums ----
 	org	$111296
-	bsr.w	warp_mod_add
+	bsr.w	mod_dest_add
 
 ; ---- frame_clear_modulation_sums ----
 	org	$1112a4
-	bsr.w	warp_mod_add
+	bsr.w	mod_dest_add
 
 ; ---- frame_clear_modulation_sums ----
 	org	$1112b2
-	bsr.w	warp_mod_add
+	bsr.w	mod_dest_add
 
 ; ---- FRAME_SECONDARY_RECORD_LOOP ----
 	org	$1112e2
-	bsr.w	warp_mod_add
+	bsr.w	mod_dest_add
 
 ; ---- frame_wave_bend_range ----
 	org	frame_wave_bend_range
@@ -520,6 +522,26 @@ UI_PAGE_DESCRIPTOR macro cap,tit,s0,s1,s2,s3,cb,byte16,byte17
 	; Row 2 names the edition after column 13; the Version page writes its board
 	; caption ("Board #3+VEX") over columns 1..12.
 	dc.b	" Waldorf Microwave 2   Version 2.33     ","              ",EDITION_TEXT,0
+
+; ---- MIDI_SET_PANEL_OUTPUT_BIT ----
+	org	MIDI_SET_PANEL_OUTPUT_BIT
+	include	"features/region_output.asm"
+	if	*>EDITION_REGION_OUTPUT_END
+	error	"The panel-output region overflows"
+	endif
+	if	*<EDITION_REGION_OUTPUT_END
+	dc.b	[EDITION_REGION_OUTPUT_END-*]$ff
+	endif
+
+; ---- midi_wait_input_event ----
+	org	midi_wait_input_event
+	include	"features/region_wait.asm"
+	if	*>EDITION_REGION_WAIT_END
+	error	"The input-wait region overflows"
+	endif
+	if	*<EDITION_REGION_WAIT_END
+	dc.b	[EDITION_REGION_WAIT_END-*]$ff
+	endif
 
 ; ---- effect_type_set ----
 	org	$11a4de

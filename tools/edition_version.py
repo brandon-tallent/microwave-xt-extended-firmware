@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Write the Tallent Edition version text for the MPE build.
 
-VERSION holds MAJOR.MINOR.PATCH, ending -dev between releases. The text is
+VERSION holds MAJOR.MINOR.PATCH, ending -dev between releases or a short
+tag of letters and digits for a test build given to a tester. The text is
 padded to the columns the version string gives it, after the Version page's
 board caption on the display's second row."""
 import argparse
 from pathlib import Path
 import re
 
-VERSION_PATTERN = r"\d+\.\d+\.\d+(-dev)?"
+VERSION_PATTERN = r"\d+\.\d+\.\d+(-[a-z0-9]+)?"
 EDITION = "Tallent Edition "
 TEXT_COLUMNS = 25  # row 2, columns 14..38; the stock string ends before column 39
 
@@ -16,7 +17,7 @@ TEXT_COLUMNS = 25  # row 2, columns 14..38; the stock string ends before column 
 def write(version_path: Path, output: Path) -> None:
     version = version_path.read_text().strip()
     if not re.fullmatch(VERSION_PATTERN, version):
-        raise SystemExit(f"{version_path}: expected MAJOR.MINOR.PATCH, optionally ending -dev")
+        raise SystemExit(f"{version_path}: expected MAJOR.MINOR.PATCH, optionally ending -dev or a test tag")
     text = EDITION + version
     if len(text) > TEXT_COLUMNS:
         raise SystemExit(f"'{text}' is longer than the {TEXT_COLUMNS} display columns it has")

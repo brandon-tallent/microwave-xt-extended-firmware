@@ -3,15 +3,16 @@
 An unofficial firmware extension for the Waldorf Microwave II, XT and XTk, operating system 2.33:
 
 * Independent wavetable selection for both oscillators.
-* X-Mod: new Phase and Amplitude modulation modes for both oscillators.
-* Warp: nine ways to reshape each oscillator's wave as it plays, with two new modulation destinations, W1 Warp and W2 Warp.
+* X-Mod: new Phase and Amplitude modulation modes for both oscillators (XT and XTk).
+* Warp: nine ways to reshape each oscillator's wave as it plays, with two new modulation destinations, W1 Warp and W2 Warp (XT and XTk).
 * New aliasing settings modeled after the Industrial Music Electronics Piston Honda Mk II Eurorack module.
 * Interpolation: optional smooth wavetable scanning as on the Synthesis Technology E352 Cloud Terrarium and the Piston Honda, with Startwave in hundredths of a wave.
+* FX Para 1-3: three new modulation destinations that move the effect's settings, such as its Speed, Feedback or dry/wet mix.
 * MPE input, with per-note pitch bend, pressure and Y.
 * MIDI controllers for every new setting.
-* The Tallent Edition Sounds: 60 Sounds and nine wavetables that use the new features.
+* The Tallent Edition Sounds: 80 Sounds and nine wavetables that use the new features.
 
-All original features remain. The new pages sit behind Shift with the Wavetable, FM Amount and Env Amount knobs, and Waldorf's update can be loaded again at any time.
+All original features remain. On an XT or XTk, the new pages sit behind Shift with the Wavetable, FM Amount and Env Amount knobs. A Microwave II plays 8 voices and reaches the new pages with the Page dial. Waldorf's update can be loaded again at any time.
 
 See the [New Features Guide](https://brandon-tallent.github.io/microwave-xt-extended-firmware/manual.html) for how everything works.
 
@@ -36,7 +37,7 @@ Global settings stay as they are.
 ## Versions
 
 The patcher shows the version at the top of the page. On the XT, the second
-line of the display reads `Tallent Edition 1.0.0` as it starts up. A version
+line of the display reads `Tallent Edition` and the version as it starts up. A version
 ending in `-dev` is a build between releases.
 
 [CHANGELOG.md](CHANGELOG.md) lists the changes in each release.

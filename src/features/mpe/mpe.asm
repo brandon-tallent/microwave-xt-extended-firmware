@@ -60,8 +60,6 @@ mpe_control_change:
 	beq.b	mpe_control_change_y
 	tst.w	a6
 	beq.b	mpe_control_change_stock
-	cmp.b	GLOBAL_CONTROLLER_Y,d0
-	beq.b	mpe_control_change_y
 	; Mode 3 ignores Bank Select on Member Channels.
 	cmpi.b	#MIDI_CC_BANK_SELECT_MSB,d0
 	beq.w	mpe_consume_event
@@ -377,8 +375,8 @@ mpe_bend_apply_member_next:
 	adda.w	#VOICE_RECORD_STRIDE,a2
 	bra.b	mpe_bend_apply_member_voice
 mpe_bend_apply_manager:
-	; Manager: add the change of its scaled bend to every Zone voice, release
-	; tails included.
+	; Manager: a held Zone voice takes its Member's scaled bend (none on the
+	; Manager) plus the Manager's; a release tail moves by the change.
 	move.w	d3,d0
 	clr.w	d1
 	move.b	MPE_MANAGER_BEND_RANGE,d1
@@ -386,6 +384,7 @@ mpe_bend_apply_manager:
 	move.l	d0,d3
 	move.w	d4,d0
 	bsr.w	mpe_scale_bend
+	move.l	d0,d6
 	sub.l	d3,d0
 	move.l	d0,d3
 	clr.w	d5
@@ -398,9 +397,25 @@ mpe_bend_apply_manager_voice:
 	move.b	VOICE_MIDI_CHANNEL(a2),d0
 	bsr.w	mpe_channel_in_zone
 	beq.b	mpe_bend_apply_manager_next
+	cmpi.b	#MPE_HELD_STAGE_MIN,VOICE_AMP_ENV_STAGE(a2)
+	blo.b	mpe_bend_apply_manager_tail
+	moveq	#0,d0
+	moveq	#0,d1
+	move.b	VOICE_MIDI_CHANNEL(a2),d1
+	beq.b	mpe_bend_apply_manager_sum
+	add.w	d1,d1
+	move.w	0(a0,d1.w),d0
+	move.w	d5,-(sp)
+	bsr.w	mpe_member_bend_offset
+	move.w	(sp)+,d5
+mpe_bend_apply_manager_sum:
+	add.l	d6,d0
+	bra.b	mpe_bend_apply_manager_store
+mpe_bend_apply_manager_tail:
 	move.w	VOICE_PITCH_BEND(a2),d0
 	ext.l	d0
 	add.l	d3,d0
+mpe_bend_apply_manager_store:
 	bsr.w	mpe_clamp_bend
 	move.w	d0,VOICE_PITCH_BEND(a2)
 mpe_bend_apply_manager_next:
@@ -515,6 +530,18 @@ mpe_apply_dimension_manager_voice:
 	move.b	VOICE_MIDI_CHANNEL(a2),d0
 	bsr.w	mpe_channel_in_zone
 	beq.b	mpe_apply_dimension_manager_next
+	cmpi.b	#MPE_HELD_STAGE_MIN,VOICE_AMP_ENV_STAGE(a2)
+	blo.b	mpe_apply_dimension_manager_tail
+	moveq	#0,d0
+	moveq	#0,d3
+	move.b	VOICE_MIDI_CHANNEL(a2),d3
+	beq.b	mpe_apply_dimension_manager_sum
+	add.w	d3,d3
+	move.w	0(a0,d3.w),d0
+mpe_apply_dimension_manager_sum:
+	add.w	d4,d0
+	bra.b	mpe_apply_dimension_manager_high
+mpe_apply_dimension_manager_tail:
 	move.w	0(a2,d6.w),d0
 	ext.l	d0
 	add.l	d2,d0
@@ -644,67 +671,18 @@ mpe_display_mode_char:
 	move.b	(a1)+,(a0)+
 	dbf	d1,mpe_display_mode_char
 	jmp	ui_dispatch_display_parameter_return.l
-mpe_display_y_cc:
-	; MPE_Y_CC_FORMAT: the stock parameter alias of CC D3 and the number, e.g.
-	cmpi.l	#mpe_global_page_descriptor,UI_ACTIVE_PAGE_DESCRIPTOR
-	beq.b	mpe_display_y_cc_named
-	jmp	ui_display_case_default.l
-mpe_display_y_cc_named:
-	movea.l	d2,a0
-	moveq	#MPE_FORMAT_FIELD_LONGS-1,d0
-mpe_display_clear:
-	move.l	#MPE_FORMAT_SPACES,(a0)+
-	dbf	d0,mpe_display_clear
-	movea.l	d2,a0
-	; The alias: the name of the Sound parameter the CC edits, or "CC only".
-	clr.l	d0
-	move.w	d3,d0
-	movea.l	#MIDI_CC_SOUND_PARAMETER_MAP,a1
-	move.b	0(a1,d0.w),d0
-	beq.b	mpe_display_unmapped
-	mulu.w	#MPE_PARAMETER_RECORD_BYTES,d0
-	movea.l	#single_parameter_metadata_table,a1
-	movea.l	0(a1,d0.l),a1
-	bra.b	mpe_display_name
-mpe_display_unmapped:
-	lea	mpe_text_cc_only(pc),a1
-mpe_display_name:
-	moveq	#MPE_Y_CC_NAME_CHARS-1,d1
-mpe_display_name_char:
-	move.b	(a1)+,(a0)+
-	dbf	d1,mpe_display_name_char
-	; Then "<CC>" in decimal.
-	move.b	#'<',(a0)+
-	move.w	d3,d0
-	cmpi.w	#100,d0
-	blt.b	mpe_display_tens
-	move.b	#'1',(a0)+
-	subi.w	#100,d0
-mpe_display_tens:
-	cmpi.w	#10,d0
-	blt.b	mpe_display_ones
-	divu.w	#10,d0
-	addi.b	#'0',d0
-	move.b	d0,(a0)+
-	swap	d0
-mpe_display_ones:
-	addi.b	#'0',d0
-	move.b	d0,(a0)+
-	move.b	#'>',(a0)
-	jmp	ui_dispatch_display_parameter_return.l
-
-mpe_text_cc_only:
-	dc.b	"CC only  "
 mpe_mode_names:
 	; MPE Mode values, MPE_MODE_NAME_CHARS each.
 	dc.b	"off      "
 	dc.b	"on       "
 	dc.b	"Zone bend"
 mpe_page_labels:
-	; Captions of the [MPE] Global page's three value positions.
-	dc.b	" MPE Mode|         |Y-axis input CC     ",0
+	; The [MPE] Global page's captions: MPE Mode in the first position.
+	dc.b	" MPE Mode|                              ",0
 mpe_page_title:
 	dc.b	"[MPE]",0
 mpe_parameter_name:
 	dc.b	"MPE Mode",0
-	align	2
+	if	(*-mpe_mode_names)&1
+	dc.b	0
+	endif

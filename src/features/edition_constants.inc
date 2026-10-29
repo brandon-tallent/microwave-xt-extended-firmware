@@ -7,13 +7,11 @@
 EDITION_IMAGE_END  equ  $11ffb7
 
 ; ---- RAM ----
-; EDITION_RAM is controller SRAM that no stock code addresses: the 526 bytes
-; between UI_DEMO_DELAY ($4970, one word) and ui_edit_display_page ($4b80)
-; have no symbol and no absolute reference in the source, sit far from the
-; stack (PLATFORM_RAM_BOOT down), are cleared at boot, and read zero on the
-; station XT after use.
-EDITION_RAM        equ  $4972
-EDITION_RAM_END    equ  $4b80
+; EDITION_RAM is the controller SRAM between the DSP channel-port table and
+; the SysEx receive buffer.
+DSP_CHANNEL_PORT_TABLE_BYTES equ (FRAME_DSP_PORT_INDEX_MASK+1)*4
+EDITION_RAM        equ  PLATFORM_DSP_CHANNEL_PORT_TABLE+DSP_CHANNEL_PORT_TABLE_BYTES
+EDITION_RAM_END    equ  PLATFORM_RAM_SYSEX_BUFFER
 MPE_RAM            equ  EDITION_RAM
 MPE_RAM_BYTES      equ  64
 OSC2_TABLE_RAM     equ  MPE_RAM+MPE_RAM_BYTES
@@ -25,17 +23,16 @@ MORPH_RAM_BYTES    equ  VOICE_EXPANDED_COUNT*MORPH_VOICE_BYTES
 ; ---- Display formatter selectors ----
 ; ui_dispatch_display_parameter's stock table ends at
 ; ui_display_parameter_selector_max; edition_display_dispatch serves these.
-MPE_Y_CC_FORMAT    equ  ui_display_parameter_selector_max+1
-MPE_MODE_FORMAT    equ  ui_display_parameter_selector_max+2
-OSC2_TABLE_FORMAT  equ  ui_display_parameter_selector_max+3
-XMOD_FORMAT        equ  ui_display_parameter_selector_max+4
-WARP_FORMAT        equ  ui_display_parameter_selector_max+5
-ALIASING_FORMAT    equ  ui_display_parameter_selector_max+6
-INTERP_FORMAT      equ  ui_display_parameter_selector_max+7
-WAVE1_POSITION_FORMAT equ  ui_display_parameter_selector_max+8
-WAVE2_POSITION_FORMAT equ  ui_display_parameter_selector_max+9
-WARP1_AMOUNT_FORMAT equ  ui_display_parameter_selector_max+10
-WARP2_AMOUNT_FORMAT equ  ui_display_parameter_selector_max+11
+MPE_MODE_FORMAT    equ  ui_display_parameter_selector_max+1
+OSC2_TABLE_FORMAT  equ  ui_display_parameter_selector_max+2
+XMOD_FORMAT        equ  ui_display_parameter_selector_max+3
+WARP_FORMAT        equ  ui_display_parameter_selector_max+4
+ALIASING_FORMAT    equ  ui_display_parameter_selector_max+5
+INTERP_FORMAT      equ  ui_display_parameter_selector_max+6
+WAVE1_POSITION_FORMAT equ  ui_display_parameter_selector_max+7
+WAVE2_POSITION_FORMAT equ  ui_display_parameter_selector_max+8
+WARP1_AMOUNT_FORMAT equ  ui_display_parameter_selector_max+9
+WARP2_AMOUNT_FORMAT equ  ui_display_parameter_selector_max+10
 
 ; ---- Osc menu bank (osc_bank.asm) ----
 ; Pages: 0 Osc1 1, 1 Osc1 2, 2 Osc2 1, 3 Osc2 2, 4 X-Mod, 5 Wave1 1, 6 Wave1
@@ -47,6 +44,7 @@ EDITION_PAGE_WAVE2_3    equ  9
 EDITION_PAGE_WARP       equ  10
 
 ; ---- Page descriptors ----
+UI_PAGE_FLAG_XT_ONLY    equ  $04
 EDITION_PAGE_DESCRIPTOR macro caption,title,slot0,slot1,slot2,slot3,callback,flags0,flags1
 	dc.l	caption,title
 	dc.b	slot0,slot1,slot2,slot3
@@ -59,3 +57,5 @@ EDITION_REGION_DEMO_END  equ  $1193fc
 EDITION_REGION_SEEDED_END equ  $10f6a6
 EDITION_REGION_RAMP_END  equ  $114abc
 EDITION_REGION_PANEL_END equ  $105a4c
+EDITION_REGION_WAIT_END  equ  $11a324
+EDITION_REGION_OUTPUT_END equ $1199dc

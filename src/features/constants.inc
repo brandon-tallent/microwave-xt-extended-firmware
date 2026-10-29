@@ -5,3 +5,5 @@
 	include	"features/warp/warp_constants.inc"
 	include	"features/honda/honda_constants.inc"
 	include	"features/morph/morph_constants.inc"
+	include	"features/fxpara/fxpara_constants.inc"
+	include	"features/mod_dests_constants.inc"

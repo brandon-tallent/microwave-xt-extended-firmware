@@ -2,24 +2,64 @@
 	dc.b	$f2,$42,$36
 	dc.b	$f2,$40,$39
 	dc.b	$f2,$42,$37
-	dc.b	$bc,$a4,$3c
-	dc.b	$a3,$86,$bf
-	dc.b	$a1,$c5,$ba
-	dc.b	$a4,$48,$32
-	dc.b	$a8,$4d,$b5
-	dc.b	$92,$6c,$b0
-	dc.b	$91,$31,$be
-	dc.b	$97,$1d,$b5
-	dc.b	$9a,$e4,$3c
-	dc.b	$99,$2b,$b1
-	dc.b	$82,$2c,$b0
-	dc.b	$81,$f1,$be
-	dc.b	$88,$35,$b2
-	dc.b	$73,$a6,$3a
-	; Y:$0211, 26 words
+	dc.b	$ae,$a4,$3c
+	dc.b	$ad,$86,$bf
+	dc.b	$93,$c5,$ba
+	dc.b	$96,$48,$32
+	dc.b	$9a,$4d,$b5
+	dc.b	$9c,$6c,$b0
+	dc.b	$83,$31,$be
+	dc.b	$81,$1d,$b5
+	dc.b	$84,$e4,$3c
+	dc.b	$8b,$2b,$b1
+	dc.b	$8c,$2c,$b0
+	dc.b	$73,$f1,$be
+	dc.b	$7a,$35,$b2
+	dc.b	$7d,$a6,$3a
+	; Y:$0211, 66 words
 	dc.b	$f2,$42,$3b
-	dc.b	$f2,$42,$23
+	dc.b	$f2,$42,$7b
 	dc.b	$f2,$40,$28
+	dc.b	$f2,$40,$b2
+	dc.b	$f2,$41,$f6
+	dc.b	$f2,$41,$e8
+	dc.b	$f2,$41,$ee
+	dc.b	$f2,$41,$e5
+	dc.b	$f2,$41,$d8
+	dc.b	$f2,$41,$d3
+	dc.b	$f2,$44,$94
+	dc.b	$f2,$41,$08
+	dc.b	$f2,$41,$01
+	dc.b	$f2,$48,$e0
+	dc.b	$f2,$4c,$cd
+	dc.b	$f2,$4c,$9c
+	dc.b	$f2,$4c,$9f
+	dc.b	$f2,$4c,$95
+	dc.b	$f2,$4c,$94
+	dc.b	$f2,$4c,$8e
+	dc.b	$f2,$43,$9c
+	dc.b	$f2,$4d,$e0
+	dc.b	$f2,$4d,$d5
+	dc.b	$f2,$43,$a5
+	dc.b	$f2,$43,$a7
+	dc.b	$f2,$43,$a5
+	dc.b	$f2,$43,$a4
+	dc.b	$f2,$43,$a4
+	dc.b	$f2,$43,$a4
+	dc.b	$f2,$43,$a5
+	dc.b	$f2,$43,$a5
+	dc.b	$f2,$4d,$d7
+	dc.b	$f2,$4d,$ce
+	dc.b	$f2,$43,$59
+	dc.b	$f2,$43,$59
+	dc.b	$a4,$1d,$39
+	dc.b	$b7,$15,$39
+	dc.b	$a4,$1d,$39
+	dc.b	$b7,$15,$39
+	dc.b	$a4,$25,$39
+	dc.b	$b4,$8e,$39
+	dc.b	$b6,$90,$39
+	dc.b	$a5,$20,$39
 	dc.b	$85,$e5,$72
 	dc.b	$86,$02,$31
 	dc.b	$85,$15,$7c
@@ -27,17 +67,17 @@
 	dc.b	$88,$55,$4d
 	dc.b	$84,$92,$30
 	dc.b	$86,$c5,$0c
-	dc.b	$80,$a2,$33
+	dc.b	$80,$a2,$b1
 	dc.b	$87,$a5,$73
 	dc.b	$86,$72,$33
 	dc.b	$85,$45,$65
 	dc.b	$87,$12,$33
 	dc.b	$f2,$43,$18
-	dc.b	$f2,$49,$a6
-	dc.b	$f2,$49,$8e
+	dc.b	$f2,$49,$4e
+	dc.b	$f2,$49,$b6
 	dc.b	$f2,$4d,$3a
-	dc.b	$f2,$48,$b4
-	dc.b	$f2,$48,$9b
+	dc.b	$f2,$48,$17
+	dc.b	$f2,$48,$06
 	dc.b	$f2,$44,$b8
 	dc.b	$f2,$44,$a2
 	dc.b	$f2,$40,$12
@@ -135,25 +175,25 @@
 	dc.b	$b6,$b6,$39
 	dc.b	$f2,$43,$8e
 	dc.b	$93,$b6,$39
-	dc.b	$f2,$43,$a5
+	dc.b	$f2,$4b,$e4
 	dc.b	$d2,$42,$3a
 	dc.b	$fc,$ec,$e4
 	dc.b	$b6,$b6,$39
 	dc.b	$f2,$43,$a6
 	dc.b	$93,$b6,$39
-	dc.b	$f2,$43,$91
+	dc.b	$f2,$4b,$d0
 	dc.b	$f5,$32,$bd
-	dc.b	$f2,$48,$94
+	dc.b	$f2,$48,$73
 	dc.b	$90,$b6,$39
-	dc.b	$f2,$4e,$3e
+	dc.b	$f2,$49,$e6
 	dc.b	$ff,$4c,$df
 	dc.b	$90,$b6,$39
-	dc.b	$f2,$4e,$71
+	dc.b	$f2,$4e,$19
 	dc.b	$ff,$4c,$df
 	dc.b	$f2,$42,$35
 	dc.b	$a5,$b6,$39
 	dc.b	$f2,$42,$3f
-	dc.b	$ac,$9b,$39
+	dc.b	$f5,$9b,$b7
 	dc.b	$f5,$18,$b7
 	dc.b	$f3,$03,$b5
 	dc.b	$fc,$6c,$d1
@@ -173,7 +213,7 @@
 	dc.b	$f8,$b2,$b9
 	dc.b	$f2,$43,$8e
 	dc.b	$f2,$42,$39
-	dc.b	$f2,$42,$d5
+	dc.b	$f2,$42,$c5
 	dc.b	$f2,$4d,$39
 	dc.b	$ca,$41,$39
 	dc.b	$86,$b6,$39
@@ -388,17 +428,19 @@
 	dc.b	$d2,$42,$60
 	dc.b	$b7,$b6,$32
 	dc.b	$f2,$43,$39
-	dc.b	$fc,$e3,$90
+	dc.b	$fc,$e3,$93
 	dc.b	$d0,$71,$39
+	dc.b	$f6,$16,$2b
 	dc.b	$c9,$41,$39
-	dc.b	$f1,$be,$cd
-	dc.b	$fc,$5d,$e5
+	dc.b	$be,$90,$39
+	dc.b	$d2,$42,$3a
+	dc.b	$fc,$5d,$e7
 	dc.b	$b7,$b6,$39
 	dc.b	$0d,$bd,$39
 	dc.b	$d2,$01,$39
 	dc.b	$a5,$a1,$39
 	dc.b	$d2,$42,$74
-	dc.b	$fc,$ed,$d1
+	dc.b	$fc,$ed,$d3
 	dc.b	$d2,$42,$51
 	dc.b	$a7,$11,$39
 	dc.b	$a7,$19,$39
@@ -406,8 +448,22 @@
 	dc.b	$d2,$42,$51
 	dc.b	$af,$21,$39
 	dc.b	$f8,$8e,$4e
-	dc.b	$fe,$43,$90
+	dc.b	$fe,$43,$93
 	dc.b	$d2,$42,$6d
 	dc.b	$d2,$42,$22
-	dc.b	$f1,$be,$96
-	dc.b	$fe,$43,$90
+	dc.b	$ad,$20,$39
+	dc.b	$fe,$43,$93
+	dc.b	$b7,$21,$39
+	dc.b	$bd,$21,$39
+	dc.b	$d0,$2c,$39
+	dc.b	$b7,$b6,$39
+	dc.b	$f2,$43,$d4
+	dc.b	$d2,$42,$5d
+	dc.b	$d3,$db,$39
+	dc.b	$d2,$42,$22
+	dc.b	$fe,$48,$ef
+	dc.b	$b0,$21,$39
+	dc.b	$fe,$4d,$c9
+	dc.b	$ff,$4c,$4c
+	dc.b	$fc,$3d,$c0
+	dc.b	$fe,$4d,$c0
